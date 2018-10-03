@@ -1,4 +1,6 @@
 
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 /*
@@ -12,20 +14,37 @@ import javax.swing.table.AbstractTableModel;
  * @author vizug
  */
 public class VelocityTableModel extends AbstractTableModel{
-
+    private ArrayList<Measurement> measurements = new ArrayList<>();
+    private static final String[] COLNAMES ={"Datum","Uhrzeit","Kennzeichen","Gemessen","Erlaubt","Übertretung"};
     @Override
     public int getRowCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return measurements.size();
     }
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return COLNAMES.length;
     }
 
     @Override
+    public String getColumnName(int column) {
+        return COLNAMES[column];
+    }
+    
+
+    @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Measurement m = measurements.get(rowIndex);
+        
+        switch(columnIndex){
+            case 0: return m.getLdt().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
+            case 1: return m.getLdt().format(DateTimeFormatter.ofPattern("hh:mm"));
+        }
+        
+    }
+    public void add(Measurement m){
+        measurements.add(m);
+        fireTableRowsInserted(measurements.size()-1,measurements.size()-1);
     }
     
 }
