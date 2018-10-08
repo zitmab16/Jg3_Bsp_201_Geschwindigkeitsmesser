@@ -6,25 +6,29 @@ import java.time.LocalDateTime;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author vizug
  */
 public class Measurement {
-    
+
     private LocalDateTime ldt;
     private String kennzeichen;
-    private double gemessen;
-    private double erlaubt;
+    private int gemessen;
+    private int erlaubt;
     private double uebertreten;
 
-    public Measurement(LocalDateTime ldt, String kennzeichen, double gemessen, double erlaubt, double uebertreten) {
+    public Measurement(LocalDateTime ldt, String kennzeichen, int gemessen, int erlaubt) {
         this.ldt = ldt;
         this.kennzeichen = kennzeichen;
         this.gemessen = gemessen;
         this.erlaubt = erlaubt;
-        this.uebertreten = uebertreten;
+        calcUeberschreitung();
+
+    }
+
+    public void calcUeberschreitung() {
+        uebertreten = gemessen - erlaubt;
     }
 
     public LocalDateTime getLdt() {
@@ -35,18 +39,16 @@ public class Measurement {
         return kennzeichen;
     }
 
-    public double getGemessen() {
+    public int getGemessen() {
         return gemessen;
     }
 
-    public double getErlaubt() {
+    public int getErlaubt() {
         return erlaubt;
     }
 
     public double getUebertreten() {
         return uebertreten;
     }
-    
-    
-    
+
 }
