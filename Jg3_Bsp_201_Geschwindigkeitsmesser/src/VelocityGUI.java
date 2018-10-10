@@ -21,6 +21,7 @@ public class VelocityGUI extends javax.swing.JFrame {
     public VelocityGUI() {
         initComponents();
         jTable.setModel(vtm);
+        //jTable.setDefaultRenderer(Object.class, new MyTableCellRenderer());
         vtm.add(new Measurement(LocalDateTime.now(), "St Ana", 120, 100));
     }
 
@@ -112,7 +113,7 @@ public class VelocityGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuBar1ComponentRemoved
 
     private void miDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miDeleteActionPerformed
-        int idx = jTable.getSelectedRow();
+        int [] idx = jTable.getSelectedRows();
         vtm.delete(idx);
     }//GEN-LAST:event_miDeleteActionPerformed
 

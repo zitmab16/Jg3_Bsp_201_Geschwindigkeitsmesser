@@ -1,5 +1,7 @@
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /*
@@ -62,59 +64,60 @@ public class VelocityDlg extends javax.swing.JDialog {
         lbDatum.setText("Datum: ");
         getContentPane().add(lbDatum);
 
-        tfDatum.setText("12.03.2001");
+        tfDatum.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
         getContentPane().add(tfDatum);
 
         lbUhrzeit.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbUhrzeit.setText("Uhrzeit: ");
         getContentPane().add(lbUhrzeit);
 
-        tfUhrzeit.setText("12:03");
-        getContentPane().add(tfUhrzeit);
+        tfUhrzeit.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm"
+            + "")));
+getContentPane().add(tfUhrzeit);
 
-        lbKennzeichen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbKennzeichen.setText("Kennzeichen: ");
-        getContentPane().add(lbKennzeichen);
+lbKennzeichen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+lbKennzeichen.setText("Kennzeichen: ");
+getContentPane().add(lbKennzeichen);
 
-        tfKennzeichen.setText("SO-NNE6");
-        getContentPane().add(tfKennzeichen);
+tfKennzeichen.setText("SO-NNE6");
+getContentPane().add(tfKennzeichen);
 
-        lbVGemessen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbVGemessen.setText("V-Gemessen: ");
-        getContentPane().add(lbVGemessen);
+lbVGemessen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+lbVGemessen.setText("V-Gemessen: ");
+getContentPane().add(lbVGemessen);
 
-        tfVGemessen.setText("132.3");
-        getContentPane().add(tfVGemessen);
+tfVGemessen.setText("132.3");
+getContentPane().add(tfVGemessen);
 
-        lbVErlaubt.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbVErlaubt.setText("V-Erlaubt: ");
-        getContentPane().add(lbVErlaubt);
+lbVErlaubt.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+lbVErlaubt.setText("V-Erlaubt: ");
+getContentPane().add(lbVErlaubt);
 
-        tfVErlaubt.setText("80");
-        tfVErlaubt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfVErlaubtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tfVErlaubt);
+tfVErlaubt.setText("80");
+tfVErlaubt.addActionListener(new java.awt.event.ActionListener() {
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        tfVErlaubtActionPerformed(evt);
+    }
+    });
+    getContentPane().add(tfVErlaubt);
 
-        btAdd.setText("Übernehmen");
-        btAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAddActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btAdd);
+    btAdd.setText("Übernehmen");
+    btAdd.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btAddActionPerformed(evt);
+        }
+    });
+    getContentPane().add(btAdd);
 
-        btcancel.setText("Abbrechen");
-        btcancel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btcancelActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btcancel);
+    btcancel.setText("Abbrechen");
+    btcancel.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+            btcancelActionPerformed(evt);
+        }
+    });
+    getContentPane().add(btcancel);
 
-        pack();
+    pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfVErlaubtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfVErlaubtActionPerformed

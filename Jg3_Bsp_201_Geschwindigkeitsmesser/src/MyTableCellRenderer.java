@@ -1,11 +1,10 @@
 
 import java.awt.Color;
 import java.awt.Component;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.TableCellRenderer;
 
  /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,11 +16,12 @@ import javax.swing.JTable;
  *
  * @author vizug
  */
-public class TableCellRenderer {
+public class MyTableCellRenderer implements TableCellRenderer {
+       @Override
        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
     JLabel label = new JLabel();
-    label.setText(value.toString());
-    
+    //label.setText(value.toString());
+           System.out.println(value);
     Measurement m= (Measurement)value;
     
     switch(column){

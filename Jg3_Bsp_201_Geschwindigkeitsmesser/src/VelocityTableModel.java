@@ -60,9 +60,13 @@ public class VelocityTableModel extends AbstractTableModel {
         fireTableRowsInserted(measurements.size() - 1, measurements.size() - 1);
     }
 
-    public void delete(int idx) {
-        measurements.remove(idx);
-        fireTableRowsDeleted(idx, idx);
+    public void delete(int [] idx) {
+       
+        for (int i = 0; i < idx.length-1; i++) {
+             measurements.remove(idx[i]);
+           
+        }
+         fireTableRowsUpdated(0, measurements.size()-1);
     }
 
     public double calcAVG() {
