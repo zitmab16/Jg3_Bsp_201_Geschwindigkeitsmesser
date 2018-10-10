@@ -1,4 +1,9 @@
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
@@ -81,5 +86,20 @@ public class VelocityTableModel extends AbstractTableModel {
 
         return avg;
     }
+    public void save(File f) throws Exception {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
 
+        for (Measurement s: measurements) {
+            oos.writeObject(s);
+        }
+    }
+
+    public void load(File f) throws Exception {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+        Object a = null;
+        while ((a = ois.readObject()) != null) {
+            add((Measurement) a);
+        }
+
+}
 }

@@ -1,6 +1,9 @@
-
+ 
+import java.io.File;
 import java.time.LocalDateTime;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -42,6 +45,8 @@ public class VelocityGUI extends javax.swing.JFrame {
         jTable = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        miLoad = new javax.swing.JMenuItem();
+        miSave = new javax.swing.JMenuItem();
 
         miAdd.setText("Hinzufügen");
         miAdd.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +95,24 @@ public class VelocityGUI extends javax.swing.JFrame {
         });
 
         jMenu1.setText("Datei");
+
+        miLoad.setText("Load");
+        miLoad.setToolTipText("");
+        miLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miLoadActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miLoad);
+
+        miSave.setText("Save");
+        miSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miSaveActionPerformed(evt);
+            }
+        });
+        jMenu1.add(miSave);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -130,6 +153,38 @@ public class VelocityGUI extends javax.swing.JFrame {
         double wert = vtm.calcAVG();
         JOptionPane.showMessageDialog(null, String.format("Die durchschnittliche Übertretung liegt bei %.2f", wert));
     }//GEN-LAST:event_miAVGActionPerformed
+
+    private void miSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSaveActionPerformed
+         File f = null;
+
+        JFileChooser chooser = new JFileChooser();
+        int res = chooser.showOpenDialog(null);
+        chooser.addChoosableFileFilter(new FileNameExtensionFilter(".ser", "ser"));
+        if (res == JFileChooser.APPROVE_OPTION) {
+            f = chooser.getSelectedFile();
+        }
+        try {
+           vtm.load(f);
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_miSaveActionPerformed
+
+    private void miLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miLoadActionPerformed
+         File f = null;
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.addChoosableFileFilter(new FileNameExtensionFilter(".ser", "ser"));
+        int res = chooser.showOpenDialog(null);
+        if (res == JFileChooser.APPROVE_OPTION) {
+            f = chooser.getSelectedFile();
+        }
+        try {
+            vtm.load(f);
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_miLoadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +229,8 @@ public class VelocityGUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem miAVG;
     private javax.swing.JMenuItem miAdd;
     private javax.swing.JMenuItem miDelete;
+    private javax.swing.JMenuItem miLoad;
+    private javax.swing.JMenuItem miSave;
     private javax.swing.JPopupMenu pmMenu;
     // End of variables declaration//GEN-END:variables
 }
