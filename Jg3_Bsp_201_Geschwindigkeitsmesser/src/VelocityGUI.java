@@ -24,7 +24,7 @@ public class VelocityGUI extends javax.swing.JFrame {
     public VelocityGUI() {
         initComponents();
         jTable.setModel(vtm);
-        //jTable.setDefaultRenderer(Object.class, new MyTableCellRenderer());
+        jTable.setDefaultRenderer(Object.class, new MyTableCellRenderer());
         vtm.add(new Measurement(LocalDateTime.now(), "St Ana", 120, 100));
     }
 

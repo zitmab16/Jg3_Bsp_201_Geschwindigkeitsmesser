@@ -41,24 +41,10 @@ public class VelocityTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Measurement m = measurements.get(rowIndex);
 
-        switch (columnIndex) {
-            case 0:
-                return m.getLdt().format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-            case 1:
-                return m.getLdt().format(DateTimeFormatter.ofPattern("hh:mm"));
-            case 2:
-                return m.getKennzeichen();
-            case 3:
-                return m.getGemessen();
-            case 4:
-                return m.getErlaubt();
-            case 5:
-                return m.getUebertreten();
-            default:
-                return "???";
+       return m;
         }
 
-    }
+    
 
     public void add(Measurement m) {
         measurements.add(m);

@@ -86,7 +86,7 @@ lbVGemessen.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 lbVGemessen.setText("V-Gemessen: ");
 getContentPane().add(lbVGemessen);
 
-tfVGemessen.setText("132.3");
+tfVGemessen.setText("132");
 getContentPane().add(tfVGemessen);
 
 lbVErlaubt.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);

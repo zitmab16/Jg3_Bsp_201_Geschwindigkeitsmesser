@@ -20,11 +20,13 @@ public class MyTableCellRenderer implements TableCellRenderer {
        @Override
        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
     JLabel label = new JLabel();
-    //label.setText(value.toString());
-           System.out.println(value);
+    
+           
     Measurement m= (Measurement)value;
     
-    switch(column){
+    label.setOpaque(true);
+    label.setBackground(Color.white);
+    switch(table.convertColumnIndexToModel(column)){
         case 0:
             label.setText(m.getLdt().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
             break;
@@ -41,7 +43,7 @@ public class MyTableCellRenderer implements TableCellRenderer {
             label.setText(String.format("%d",m.getErlaubt()));
             break;
         case 5:
-            label.setText(String.format("%d",m.getUebertreten()));
+            label.setText(String.format("%.2f",m.getUebertreten()));
             if(m.getUebertreten()>30.0) label.setBackground(Color.red);
             if(m.getUebertreten()<=30.0 && m.getUebertreten()>20.0) label.setBackground(Color.orange);
             if(m.getUebertreten()<=20.0 && m.getUebertreten()>10.0) label.setBackground(Color.yellow);
@@ -49,7 +51,7 @@ public class MyTableCellRenderer implements TableCellRenderer {
             break;
         
     }
-    label.setOpaque(true);
+    
     
     
 //    if(value instanceof Color){
